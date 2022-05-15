@@ -47,18 +47,20 @@ bool isAnimekuDir(const char *path)
 
 **Kode Program Fungsi Decode dan Encode**  
 ```
-void encodeRot(char *s)
+// Function to encode with Atbash Cipher and Rot13
+void encd0fROT(char *s)
 {
     for(int i=0;i<strlen(s);i++)
     {
-        if('A' <= s[i] && s[i] <= 'Z') 
+        if('A' <= s[i] && s[i] <= 'Z')
             s[i] = 'Z'-s[i]+'A';
         else if('a' <= s[i] && s[i] <= 'z') 
             s[i] = ((s[i]-'a'+13)%26)+'a';
     }
 }
- 
-void decodeRot(char *s)
+
+// Function to decode with Atbash Cipher and Rot13
+void dcdofROT(char *s)
 {
     for(int i=0;s[i];i++)
     {
@@ -68,15 +70,14 @@ void decodeRot(char *s)
             s[i] = ((s[i]-'a'-13)+26)+'a';
         else if(s[i]>=110&&s[i]<='z') 
             s[i] = ((s[i]-'a'-13)%26)+'a';
-    }   
+    }
 }
-
 ``` 
 ### 1B  
 **Deskripsi Soal**    
 Semua direktori di-rename dengan awalan “Animeku_”, maka direktori tersebut akan menjadi direktori ter-encode dengan ketentuan sama dengan 1a.  
 
-**Penyelesaian**  
+**Penyelesaian**    
 Menggunakan pemanggilan salah satu fungsi FUSE, yaitu `xmp_rename`. Apabila folder yang telah di-rename berawalan "Animeku_" maka akan dilakukan encode.  
 
 **Kode Program xmp_rename**  
@@ -94,24 +95,23 @@ Menggunakan pemanggilan salah satu fungsi FUSE, yaitu `xmp_rename`. Apabila fold
 **Deskripsi Soal**  
 Apabila direktori yang terenkripsi di-rename menjadi tidak ter-encode, maka isi direktori tersebut akan terdecode.  
 
-**Penyelesaian**
-Menggunakan pemanggilan salah satu fungsi FUSE, yaitu `xmp_rename`. Apabila folder yang telah di-rename berawalan "Animeku_" maka akan dilakukan encode.  
+**Penyelesaian**  
+Menggunakan pemanggilan salah satu fungsi FUSE, yaitu `xmp_rename`. Apabila folder yang telah di-rename tak lagi berawalan "Animeku_" maka akan dilakukan decode.  
 
 **Kode Program**
 
 ```
-// jika folder terencode dan mau didecode & rename isisisisisisAnimekuDirDirDirDirDirDir ke isIANDir
-        if (isAnimekuDir(fpath) && isNamdosaqDir(tpath)) 
-        {
-            decodeFolderRekursif(fpath, 0);
-            sistemLog(fpath, tpath, 2);
-            printf("[Mendekode %s dengan kedalaman = 0.]\n", fpath);
-        }
-        else if(isAnimekuDir(fpath) && isIANDir(tpath)){
-            decodeFolderRekursif(fpath, 0);
-            sistemLog(fpath, tpath, 2);
-            printf("[Mendekode %s dengan kedalaman = 0.]\n", fpath);
-        }
+if (isAnimekuDir(fpath) && isNamdosaqDir(tpath)) 
+{
+    decodeFolderRekursif(fpath, 0);
+    sistemLog(fpath, tpath, 2);
+    printf("[Mendekode %s dengan kedalaman = 0.]\n", fpath);
+}
+else if(isAnimekuDir(fpath) && isIANDir(tpath)){
+    decodeFolderRekursif(fpath, 0);
+    sistemLog(fpath, tpath, 2);
+    printf("[Mendekode %s dengan kedalaman = 0.]\n", fpath);
+}
 ```
 
 ### 1D  
@@ -121,13 +121,13 @@ Contoh isi:
 RENAME terenkripsi /home/[USER]/Downloads/hai --> /home/[USER]/Downloads/Animeku_hebat   
 RENAME terdecode /home/[USER]/Downloads/Animeku_ --> /home/[USER]/Downloads/Coba  
 
-**Penyelesaian**
-Memanggil fungsi `encodeFolderRekursif` dan `decodeFolderRekursif` untuk melakukan sebuah proses scan file dan folder
+**Penyelesaian**  
+Memanggil fungsi logofwibu untuk melakukan pencatatan setiap data yang terenkripsi ataupun terdecode
 
 **Kode Program**
-
 ```
-void logofRename(char *cmd, int tipe, char *des) 
+// Function to record all of the encription and decription log
+void logofwibu(char *cmd, int tipe, char *des) 
 {
     time_t t = time(NULL);
     struct tm* lt = localtime(&t);
@@ -138,38 +138,8 @@ void logofRename(char *cmd, int tipe, char *des)
     FILE *out = fopen(wibulog, "a");
     fprintf(out, "%s\n", logNya);
     fclose(out);
-    return;
 }
-
-```
-```
-static int renameofXMP_(const char *from, const char *to) 
-{
-    int res; 
-    char fpath[1000], tpath[1000];
-    if (strcmp(from, "/") == 0) from = pathdir, sprintf(fpath, "%s", from);
-    else sprintf(fpath, "%s%s", pathdir, from);
-    if (strcmp(to, "/") == 0) to = pathdir, sprintf(tpath, "%s", to);
-    else sprintf(tpath, "%s%s", pathdir, to); 
-    struct stat path_stat;
-    stat(fpath, &path_stat);
-    if (!S_ISREG(path_stat.st_mode)) 
-    {
-        // jika folder terencode dan mau didecode & rename isisisisisisAnimekuDirDirDirDirDirDir ke isIANDir
-        if (isAnimekuDir(fpath) && isNamdosaqDir(tpath)) 
-        {
-            dcdofFolderRekursif(fpath, 0);
-            logofSystem(fpath, tpath, 2);
-            printf("[Mendekode %s dengan kedalaman = 0.]\n", fpath);
-        }
-        else if(isAnimekuDir(fpath) && isIANDir(tpath)){
-            dcdofFolderRekursif(fpath, 0);
-            logofSystem(fpath, tpath, 2);
-            printf("[Mendekode %s dengan kedalaman = 0.]\n", fpath);
-        }
-```
-
-
+```  
 ## Soal 2    
 Saat Anya sedang sibuk mengerjakan programnya, tiba-tiba Innu datang ke rumah Anya untuk mengembalikan barang yang dipinjamnya. Innu adalah programmer jenius sekaligus teman Anya. Ia melihat program yang dibuat oleh Anya dan membantu Anya untuk menambahkan fitur pada programnya  
 
