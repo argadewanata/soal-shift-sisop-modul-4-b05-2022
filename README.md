@@ -187,6 +187,7 @@ int dcdofFolder(const char *basePath, const char* folderName)
 Saat Anya sedang sibuk mengerjakan programnya, tiba-tiba Innu datang ke rumah Anya untuk mengembalikan barang yang dipinjamnya. Innu adalah programmer jenius sekaligus teman Anya. Ia melihat program yang dibuat oleh Anya dan membantu Anya untuk menambahkan fitur pada programnya  
 
 ### Kendala Soal 2  
+Soalnya sulit dipahami
 
 ### Screenshot Soal 2  
 
