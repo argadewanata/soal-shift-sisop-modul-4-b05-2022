@@ -192,9 +192,44 @@ Saat Anya sedang sibuk mengerjakan programnya, tiba-tiba Innu datang ke rumah An
 **Deskripsi Soal**  
 Jika suatu direktori dibuat dengan awalan “IAN_[nama]”, maka seluruh isi dari direktori tersebut akan terencode dengan algoritma Vigenere Cipher dengan key “INNUGANTENG” (Case-sensitive, Vigenere).  
 
+**Penyelesaian**  
+Melakukan pendeteksian direktori apabila terdapat awalan "IAN_" dengan fungsi `isIANDir`. Jika sudah terdeteksi, akan dilakukan encode atau decode pada directory tersebut.
+
+**Kode Program**  
+```
+// Function to detect IAN directory
+bool isIANDir(const char *path) 
+{
+    for(int i=0;i<strlen(path)-4+1;i++)
+    {
+        if(path[i] == 'I' 
+            && path[i+1] == 'A' 
+            && path[i+2] == 'N' 
+            && path[i+3] == '_') 
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+```  
+
+
 ### 2B  
 **Deskripsi Soal**  
 Jika suatu direktori di rename dengan “IAN_[nama]”, maka seluruh isi dari direktori tersebut akan terencode seperti pada no. 2a.  
+
+**Penyelesaian**  
+Menggunakan pemanggilan salah satu fungsi FUSE, yaitu `xmp_rename`. Apabila folder yang telah di-rename berawalan "IAN_" maka akan dilakukan encode.  
+```
+else if (!isIANDir(fpath) && isIANDir(tpath)) 
+    {
+        printf("[Mengenkode %s.]\n", fpath);
+        sistemLog(fpath, tpath, 1);
+        int itung = encodeFolderRekursif(fpath, 1000);
+        printf("[Total file yang terenkode: %d]\n", itung);
+    }
+```    
 
 ### 2C  
 **Deskripsi Soal**  
