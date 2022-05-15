@@ -76,6 +76,20 @@ void decodeRot(char *s)
 **Deskripsi Soal**    
 Semua direktori di-rename dengan awalan “Animeku_”, maka direktori tersebut akan menjadi direktori ter-encode dengan ketentuan sama dengan 1a.  
 
+**Penyelesaian**  
+Menggunakan pemanggilan salah satu fungsi FUSE, yaitu `xmp_rename`. Apabila folder yang telah di-rename berawalan "Animeku_" maka akan dilakukan encode.  
+
+**Kode Program xmp_rename**  
+``` 
+    else if (!isAnimekuDir(fpath) && isAnimekuDir(tpath)) 
+    {
+        printf("[Mengenkode %s.]\n", fpath);
+        sistemLog(fpath, tpath, 1);
+        int itung = encodeFolderRekursif(fpath, 1000);
+        printf("[Total file yang terenkode: %d]\n", itung);
+    }
+```      
+
 ### 1C  
 **Deskripsi Soal**  
 Apabila direktori yang terenkripsi di-rename menjadi tidak ter-encode, maka isi direktori tersebut akan terdecode.  
