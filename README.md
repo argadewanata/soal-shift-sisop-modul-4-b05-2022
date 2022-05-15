@@ -140,6 +140,47 @@ void logofwibu(char *cmd, int tipe, char *des)
     fclose(out);
 }
 ```  
+
+### 1E  
+**Deskripsi Soal**  
+Metode encode pada suatu direktori juga berlaku terhadap direktori yang ada di dalamnya.(rekursif)
+
+**Penyelesaian**  
+Melakukan pemanggilan fungsi `encdofFolder` untuk melakukan encode. Melakukan pemanggilan fungsi `dcdofFolder` untuk melakukan decode.   
+
+**Kode Program**  
+```
+// Function to encode folder with atbash cipher and rot13
+int encdofFolder(const char *basePath, const char* folderName) 
+{
+    char encryptedName[512];
+    strcpy(encryptedName, folderName);
+    encd0fROT(encryptedName);
+    char f_path[1024], t_path[1024];
+    sprintf(f_path, "%s/%s", basePath, folderName);
+    sprintf(t_path, "%s/%s", basePath, encryptedName);
+    int res = rename(f_path, t_path);
+    if (res == -1) 
+        return -errno;
+    return 0;
+}
+
+// Function to decode folder with atbash cipher and rot13
+int dcdofFolder(const char *basePath, const char* folderName) 
+{
+    char decryptedName[512];
+    strcpy(decryptedName, folderName);
+    dcdofROT(decryptedName);
+    char f_path[1024], t_path[1024];
+    sprintf(f_path, "%s/%s", basePath, folderName);
+    sprintf(t_path, "%s/%s", basePath, decryptedName);
+    int res = rename(f_path, t_path);
+    if (res == -1) 
+        return -errno;
+    return 0;
+}
+``` 
+
 ## Soal 2    
 Saat Anya sedang sibuk mengerjakan programnya, tiba-tiba Innu datang ke rumah Anya untuk mengembalikan barang yang dipinjamnya. Innu adalah programmer jenius sekaligus teman Anya. Ia melihat program yang dibuat oleh Anya dan membantu Anya untuk menambahkan fitur pada programnya  
 
