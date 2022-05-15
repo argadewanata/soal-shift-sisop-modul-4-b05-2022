@@ -19,6 +19,59 @@ Semua direktori dengan awalan “Animeku_” akan terencode dengan ketentuan sem
 Contoh : 
 “Animeku_/anya_FORGER.txt” → “Animeku_/naln_ULITVI.txt”  
 
+**Penyelesaian**  
+Melakukan pendeteksian direktori apabila terdapat awalan "Animeku_" dengan fungsi `isAnimekuDir`. Jika sudah terdeteksi, akan dilakukan encode atau decode pada directory tersebut.  
+
+**Kode Program Fungsi isAnimekuDir**  
+```
+bool isAnimekuDir(const char *path) 
+{
+    for(int i=0;i<strlen(path)-8+1;i++)
+    {
+        if(path[i] == 'A' 
+            && path[i+1] == 'n' 
+            && path[i+2] == 'i' 
+            && path[i+3] == 'm' 
+            && path[i+4] == 'e'
+            && path[i+5] == 'k' 
+            && path[i+6] == 'u' 
+            && path[i+7] == '_') 
+            {
+                return 1;
+            }
+    }
+    return 0;
+}
+
+``` 
+
+**Kode Program Fungsi Decode dan Encode**  
+```
+void encodeRot(char *s)
+{
+    for(int i=0;i<strlen(s);i++)
+    {
+        if('A' <= s[i] && s[i] <= 'Z') 
+            s[i] = 'Z'-s[i]+'A';
+        else if('a' <= s[i] && s[i] <= 'z') 
+            s[i] = ((s[i]-'a'+13)%26)+'a';
+    }
+}
+ 
+void decodeRot(char *s)
+{
+    for(int i=0;s[i];i++)
+    {
+        if('A' <= s[i] && s[i] <= 'Z') 
+            s[i] = 'Z'-s[i]+'A';
+        else if(s[i]>='a'&&s[i]<110) 
+            s[i] = ((s[i]-'a'-13)+26)+'a';
+        else if(s[i]>=110&&s[i]<='z') 
+            s[i] = ((s[i]-'a'-13)%26)+'a';
+    }   
+}
+
+``` 
 ### 1B  
 **Deskripsi Soal**    
 Semua direktori di-rename dengan awalan “Animeku_”, maka direktori tersebut akan menjadi direktori ter-encode dengan ketentuan sama dengan 1a.  
