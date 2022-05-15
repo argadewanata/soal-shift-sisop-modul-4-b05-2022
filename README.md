@@ -316,7 +316,8 @@ Sama seperti pada no 2D, akan di integrasikan dengan fungsi 'systemofLog'
 ## Soal 3  
 Ishaq adalah seseorang yang terkenal di kalangan anak informatika seluruh indonesia. Ia memiliki teman yang bernama innu dan anya, lalu ishaq bertemu dengan mereka dan melihat program yang mereka berdua kerjakan  sehingga ia tidak mau kalah dengan innu untuk membantu anya dengan menambah fitur yang ada pada programnya dengan ketentuan:
 
-### Kendala Soal 3    
+### Kendala Soal 3  
+Belum terlalu mengerti FUSE   
 
 ### Screenshot Soal 3  
 
