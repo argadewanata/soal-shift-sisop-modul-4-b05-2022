@@ -63,7 +63,11 @@ Karena Innu adalah seorang perfeksionis, ia membagi isi dari log systemnya menja
 [Level]::[dd][mm][yyyy]-[HH]:[MM]:[SS]::[CMD]::[DESC :: DESC]  
 
 ## Soal 3  
-Ishaq adalah seseorang yang terkenal di kalangan anak informatika seluruh indonesia. Ia memiliki teman yang bernama innu dan anya, lalu ishaq bertemu dengan mereka dan melihat program yang mereka berdua kerjakan  sehingga ia tidak mau kalah dengan innu untuk membantu anya dengan menambah fitur yang ada pada programnya dengan ketentuan:  
+Ishaq adalah seseorang yang terkenal di kalangan anak informatika seluruh indonesia. Ia memiliki teman yang bernama innu dan anya, lalu ishaq bertemu dengan mereka dan melihat program yang mereka berdua kerjakan  sehingga ia tidak mau kalah dengan innu untuk membantu anya dengan menambah fitur yang ada pada programnya dengan ketentuan:
+
+### Kendala Soal 3    
+
+### Screenshot Soal 3  
 
 ### 3A  
 **Deskripsi Soal**  
