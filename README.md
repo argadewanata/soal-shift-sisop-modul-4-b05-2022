@@ -10,6 +10,8 @@ Rere Arga Dewanata   | 5025201078
 Anya adalah adalah seorang programmer wibu yang suka mengoleksi anime. Dia sangat senang membuat program yang dikolaborasikan dengan anime.  
 
 ### Kendala Soal 1  
+1. Sulit memahami soal dan mekanisme code nya
+2. Butuh waktu untuk memahami library
 
 ### Screenshot Soal 1  
 
